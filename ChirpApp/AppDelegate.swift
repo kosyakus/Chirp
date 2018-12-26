@@ -7,15 +7,43 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    //let connect: ChirpConnect = ChirpConnect(appKey: "5b894CeE9Cdc5B0ef67CfC9c4", andSecret: "eb34d1aA8beD59ecb83520BF2116F2CbFF22f5F2e0fCfeEB4b")!
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        
+        /*connect.setConfigFromNetworkWithCompletion {
+            (error: Error?) in
+            if error == nil {
+                self.connect.start()
+            }
+        }
+        
+        let data: Data = connect.randomPayload(withLength: UInt(connect.maxPayloadLength))
+        connect.send(data)
+        
+        connect.receivedBlock = {
+            (data : Data?, channel: UInt?) -> () in
+            if let data = data {
+                print(String(data: data, encoding: .ascii) as Any)
+                return;
+            }
+        }*/
+        
         return true
     }
 

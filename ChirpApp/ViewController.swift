@@ -24,7 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         checkPermission()
         proceedWithCameraAccess()
         
-        connect = ChirpConnect(appKey: "5b894CeE9Cdc5B0ef67CfC9c4", andSecret: "eb34d1aA8beD59ecb83520BF2116F2CbFF22f5F2e0fCfeEB4b")!
+        connect = ChirpConnect(appKey: "appKey", andSecret: "secret")!
         //connect = ChirpConnect(appKey: APP_KEY, andSecret: APP_SECRET)
         if let connect = connect {
             connect.setConfigFromNetworkWithCompletion {
